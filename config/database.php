@@ -2,10 +2,10 @@
 // Pengaturan zona waktu Indonesia (WIB)
 date_default_timezone_set('Asia/Jakarta');
 
-$dbHost = '127.0.0.1';
+$dbHost = 'db';
 $dbName = 'hubble';
 $dbUser = 'root';
-$dbPass = '';
+$dbPass = 'root';
 
 try {
     $pdo = new PDO(
