@@ -3,7 +3,7 @@
 date_default_timezone_set('Asia/Jakarta');
 
 $dbHost = 'db';
-$dbName = 'hubble';
+$dbName = 'hubble_db';
 $dbUser = 'root';
 $dbPass = 'root';
 
