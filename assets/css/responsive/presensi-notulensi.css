@@ -1,0 +1,322 @@
+/* =========================================================
+   BAGIAN 3: PRESENSI, REKAP KEHADIRAN & NOTULENSI
+   ========================================================= */
+
+/* Perbaikan Desktop: Kotak Draft Notulensi memanjang penuh */
+.nt-draft-box {
+  flex: 1;
+  width: auto;
+  padding: 12px 18px 16px;
+}
+
+.nt-assigned {
+  flex-shrink: 0;
+  padding: 12px 18px 16px;
+}
+
+.nt-published {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* === TABLET (769px - 1024px) === */
+@media (max-width: 1024px) {
+  /* Statistik Presensi */
+  .stats-row.stats-big {
+    max-width: 100%;
+  }
+
+  /* Notulensi Moderator: kotak draf & notulis ditunjuk bertumpuk */
+  .nt-draft-top {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nt-draft-box,
+  .nt-assigned {
+    width: 100%;
+  }
+
+  /* Presensi Peserta */
+  .pa-choices {
+    gap: 20px;
+  }
+
+  .pa-choice {
+    width: 48%;
+  }
+}
+
+/* === MOBILE (<= 768px) === */
+@media (max-width: 768px) {
+  /* Presensi Moderator */
+  .lock-card {
+    margin-top: 24px;
+    padding: 28px 18px;
+  }
+
+  .lock-card h2 {
+    font-size: 20px;
+  }
+
+  .btn-lock {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats-row.stats-big {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .presence-banner {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .btn-banner {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Tabel Presensi & Rekap Kehadiran (Scroll Horizontal agar tidak gepeng) */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px;
+  }
+
+  .att-table {
+    min-width: 540px;
+  }
+
+  .recap-card {
+    min-height: auto;
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+
+  .recap-title {
+    font-size: 18px;
+    padding: 12px 18px;
+  }
+
+  /* Modal Presensi */
+  .pm-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 18px;
+  }
+
+  /* Presensi Peserta */
+  .pa-lock {
+    width: 100%;
+    height: auto;
+    min-height: 260px;
+    margin-top: 28px;
+    padding: 32px 18px;
+  }
+
+  .pa-lock h2 {
+    font-size: 22px;
+  }
+
+  .pa-open {
+    margin-top: 24px;
+  }
+
+  .pa-banner {
+    height: auto;
+    padding: 16px;
+  }
+
+  .pa-banner-title {
+    font-size: 18px;
+  }
+
+  .pa-banner p {
+    padding-left: 0;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .pa-heading {
+    font-size: 24px;
+    margin-top: 24px;
+  }
+
+  .pa-subheading {
+    font-size: 15px;
+  }
+
+  .pa-choices {
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .pa-choice {
+    width: 100%;
+    height: 124px;
+    padding: 12px;
+  }
+
+  .pa-success {
+    width: 100%;
+    height: auto;
+    margin-top: 24px;
+    padding: 28px 16px 36px;
+  }
+
+  .pa-success-icon {
+    width: 130px;
+    height: 130px;
+  }
+
+  .pa-success h2 {
+    margin-top: 24px;
+    font-size: 22px;
+  }
+
+  .pa-status-pill {
+    font-size: 14px;
+    height: auto;
+    min-height: 34px;
+    padding: 6px 16px;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .pa-picked {
+    height: auto;
+    padding: 18px 16px;
+  }
+
+  .pa-label {
+    padding-left: 4px;
+    font-size: 16px;
+  }
+
+  .pa-textarea {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .pa-submit {
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .pa-closed {
+    height: auto;
+    margin-top: 24px;
+    padding: 28px 16px;
+  }
+
+  .pa-closed h2 {
+    font-size: 22px;
+  }
+
+  .pa-closed p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Notulensi Moderator, Notulis & Peserta */
+  .nt-empty {
+    min-height: 260px;
+    padding: 24px 16px;
+  }
+
+  .nt-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nt-draft-actions {
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+  }
+
+  .nt-draft-actions form,
+  .nt-draft-actions .btn-form {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nt-published,
+  .nt-member-card {
+    min-height: auto;
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .nt-notulis-card {
+    min-height: auto;
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .nt-notulis-header,
+  .nt-notulis-header-narrow {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nt-notulis-text {
+    height: 240px;
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 16px;
+  }
+
+  .nt-notulis-actions {
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .btn-nt-biru,
+  .btn-nt-outline,
+  .btn-tarik {
+    width: 100% !important;
+    height: 48px;
+  }
+
+  /* Modal Gelap Notulensi */
+  .dark-overlay {
+    padding: 16px;
+  }
+
+  .dark-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .pick-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+/* === MOBILE KECIL (<= 480px) === */
+@media (max-width: 480px) {
+  .pm-actions,
+  .confirm-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .pm-btn,
+  .confirm-ok,
+  .confirm-cancel {
+    width: 100%;
+  }
+}
