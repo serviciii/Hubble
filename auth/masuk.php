@@ -38,7 +38,7 @@ include __DIR__ . '/../includes/header.php';
 
         <button type="submit" class="btn-primary">Masuk</button>
 
-        <a href="<?= base_url('dashboard.php') ?>" class="btn-outline-gray">Masuk dengan google</a>
+        <a href="<?= base_url('proses/google-login.php') ?>" class="btn-outline-gray">Masuk dengan google</a>
       </form>
 
       <p class="auth-footer">Belum punya akun? <a href="<?= base_url('auth/daftar.php') ?>">Daftar</a></p>

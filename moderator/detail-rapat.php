@@ -92,6 +92,16 @@ include __DIR__ . '/../includes/header.php';
         </button>
       </div>
 
+      <?php if (isset($rapat['passcode']) && $rapat['passcode'] !== ''): ?>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
+          <span>Passcode: <strong id="teks-passcode-rapat"><?= e($rapat['passcode']) ?></strong></span>
+          <button type="button" class="btn-copy-detail" data-copy-target="teks-passcode-rapat"
+            style="padding: 3px 10px; font-size: 12px; font-weight: 500; border: 1px solid #333; border-radius: 6px; background: #fff; cursor: pointer;">
+            Salin
+          </button>
+        </div>
+      <?php endif; ?>
+
       <div style="margin-bottom: 10px;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px;">
           <span>Link Join Rapat:</span>
