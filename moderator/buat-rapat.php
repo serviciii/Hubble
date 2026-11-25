@@ -80,7 +80,8 @@ include __DIR__ . '/../includes/header.php';
 
       <div class="mf-field">
         <label class="mf-label" for="passcode">Passcode</label>
-        <input class="mf-input" type="text" id="passcode" name="passcode" placeholder="Masukkan passcode akses">
+        <input class="mf-input" type="text" id="passcode" name="passcode" value="<?= e(old('passcode')) ?>"
+          placeholder="Masukkan passcode akses">
       </div>
 
       <div class="mf-field">

@@ -60,16 +60,17 @@ if ($aksi === 'buat') {
         $stmtCek->execute([$kodeRapat]);
     } while ($stmtCek->fetch());
 
-    $passcodeHash = $passcode !== '' ? password_hash($passcode, PASSWORD_DEFAULT) : null;
+    $passcodePlain = $passcode !== '' ? $passcode : null;
+    $passcodeHash  = $passcode !== '' ? password_hash($passcode, PASSWORD_DEFAULT) : null;
 
     $pdo->beginTransaction();
     try {
         $stmtIns = $pdo->prepare("
             INSERT INTO rapat (
                 dibuat_oleh, judul, tanggal, waktu_mulai, waktu_selesai,
-                lokasi, link_meeting, passcode_hash, agenda,
+                lokasi, link_meeting, passcode_hash, passcode, agenda,
                 berulang, pola_berulang, kode_rapat, status, presensi_dibuka
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'terjadwal', 0)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'terjadwal', 0)
         ");
         $stmtIns->execute([
             $userLogin['id_user'],
@@ -80,6 +81,7 @@ if ($aksi === 'buat') {
             $lokasi !== '' ? $lokasi : null,
             $linkMeeting !== '' ? $linkMeeting : null,
             $passcodeHash,
+            $passcodePlain,
             $agenda !== '' ? $agenda : null,
             $berulang,
             $polaBerulang,
@@ -141,14 +143,15 @@ if ($aksi === 'edit') {
         redirect('moderator/edit-rapat.php?id=' . $idRapat);
     }
 
-    $passcodeHash = $passcode !== ''
+    $passcodePlain = $passcode !== '' ? $passcode : ($rapat['passcode'] ?? null);
+    $passcodeHash  = $passcode !== ''
         ? password_hash($passcode, PASSWORD_DEFAULT)
         : $rapat['passcode_hash'];
 
     $stmtUpd = $pdo->prepare("
         UPDATE rapat SET
             judul = ?, tanggal = ?, waktu_mulai = ?, waktu_selesai = ?,
-            lokasi = ?, link_meeting = ?, passcode_hash = ?, agenda = ?,
+            lokasi = ?, link_meeting = ?, passcode_hash = ?, passcode = ?, agenda = ?,
             berulang = ?, pola_berulang = ?
         WHERE id_rapat = ?
     ");
@@ -160,6 +163,7 @@ if ($aksi === 'edit') {
         $lokasi !== '' ? $lokasi : null,
         $linkMeeting !== '' ? $linkMeeting : null,
         $passcodeHash,
+        $passcodePlain,
         $agenda !== '' ? $agenda : null,
         $berulang,
         $polaBerulang,

@@ -7,6 +7,8 @@ $userLogin = wajibLogin($pdo);
 $suksesMsg = getFlash('sukses');
 $errorMsg  = getFlash('error');
 
+$isGoogleUser = !empty($userLogin['google_id']);
+
 $pageTitle  = 'Pengaturan Akun - Hubble';
 $pageDesc   = 'Pengaturan akun Hubble - ubah profil dan kata sandi.';
 $activeMenu = 'akun';
@@ -40,7 +42,19 @@ include __DIR__ . '/../includes/header.php';
 
         <div class="form-group">
           <label for="email-profil">Email</label>
-          <input type="email" id="email-profil" name="email" value="<?= e(old('email', $userLogin['email'])) ?>" placeholder="nama@gmail.com" required>
+          <input
+            type="email"
+            id="email-profil"
+            name="email"
+            value="<?= e(old('email', $userLogin['email'])) ?>"
+            placeholder="nama@gmail.com"
+            <?= $isGoogleUser ? 'disabled style="background-color: #f3f4f6; cursor: not-allowed; color: #6b7280;"' : 'required' ?>
+          >
+          <?php if ($isGoogleUser): ?>
+            <small style="color: #6b7280; display: block; margin-top: 4px;">
+              Email dikelola otomatis oleh akun Google yang terhubung.
+            </small>
+          <?php endif; ?>
         </div>
 
         <button type="submit" class="btn-sm-primary">Simpan Perubahan</button>
@@ -52,17 +66,41 @@ include __DIR__ . '/../includes/header.php';
       <form id="form-sandi" method="POST" action="<?= base_url('proses/akun.php') ?>">
         <input type="hidden" name="aksi" value="update_sandi">
 
+        <?php if ($isGoogleUser): ?>
+          <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 12px;">
+            Kata sandi tidak dapat diubah karena akun ini masuk menggunakan Google.
+          </p>
+        <?php endif; ?>
+
         <div class="form-group">
           <label for="sandi-lama">Kata sandi saat ini</label>
-          <input type="password" id="sandi-lama" name="sandi_lama" placeholder="********" required>
+          <input
+            type="password"
+            id="sandi-lama"
+            name="sandi_lama"
+            placeholder="********"
+            <?= $isGoogleUser ? 'disabled style="background-color: #f3f4f6; cursor: not-allowed;"' : 'required' ?>
+          >
         </div>
 
         <div class="form-group">
           <label for="sandi-baru">Kata sandi baru</label>
-          <input type="password" id="sandi-baru" name="sandi_baru" placeholder="********" required>
+          <input
+            type="password"
+            id="sandi-baru"
+            name="sandi_baru"
+            placeholder="********"
+            <?= $isGoogleUser ? 'disabled style="background-color: #f3f4f6; cursor: not-allowed;"' : 'required' ?>
+          >
         </div>
 
-        <button type="submit" class="btn-sm-outline">Ubah kata sandi</button>
+        <button
+          type="submit"
+          class="btn-sm-outline"
+          <?= $isGoogleUser ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '' ?>
+        >
+          Ubah kata sandi
+        </button>
       </form>
 
       <!-- Keluar dari akun -->
